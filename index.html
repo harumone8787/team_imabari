@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>今治 観光スポット</title>
+  <style>
+    :root{
+      --bg:#0b1020;        /* 背景 */
+      --card:#121833;      /* カード色 */
+      --text:#e5e7eb;      /* 文字色 */
+      --muted:#9ca3af;     /* 補助文字 */
+      --accent:#3b82f6;    /* アクセント */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto;border-radius:16px}
+
+    /* コンテナ */
+    .container{width:min(1100px,92%);margin-inline:auto}
+
+    /* ヒーロー */
+    .hero{
+      position:relative; isolation:isolate; overflow:hidden;
+      border-radius:24px; margin:24px auto; min-height:50vh;
+      display:grid; place-items:center;
+      background:#000;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:url("https://images.unsplash.com/photo-1491555103944-7c647fd857e6?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
+      opacity:.6; filter:grayscale(.2) contrast(1.05) brightness(.9);
+      z-index:-2;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:radial-gradient(60% 60% at 50% 40%, rgba(59,130,246,.45), transparent 60%),
+                 linear-gradient(to bottom, rgba(0,0,0,.0), rgba(0,0,0,.55));
+      z-index:-1;
+    }
+    .hero-inner{ text-align:center; padding:48px 16px }
+    .app-name{
+      font-size:clamp(28px,6vw,56px); font-weight:800; letter-spacing:.02em;
+      margin:0 0 8px;
+    }
+    .subtitle{
+      margin:0; color:var(--muted); font-size:clamp(14px,2.4vw,18px)
+    }
+    .badge{
+      display:inline-block; margin-top:16px; padding:8px 14px;
+      border:1px solid rgba(229,231,235,.2); border-radius:999px;
+      font-size:14px; backdrop-filter:blur(6px); background:rgba(18,24,51,.35)
+    }
+
+    /* セクション見出し */
+    .section-title{
+      font-size:clamp(18px,3.6vw,22px);
+      margin:28px 0 12px; font-weight:700;
+    }
+
+    /* ギャラリー */
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns:repeat(2,1fr);
+    }
+    @media (min-width:720px){
+      .grid{ grid-template-columns:repeat(3,1fr) }
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(229,231,235,.08);
+      border-radius:16px; overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.25) }
+    .card-body{ padding:12px 14px }
+    .spot-name{ font-weight:700; margin:0 0 4px }
+    .spot-caption{ margin:0; color:var(--muted); font-size:14px }
+
+    /* 作成者 */
+    .creators{
+      display:grid; gap:12px;
+      grid-template-columns:repeat(1,1fr);
+    }
+    @media (min-width:640px){
+      .creators{ grid-template-columns:repeat(3,1fr) }
+    }
+    .creator{
+      background:var(--card); border:1px solid rgba(229,231,235,.08);
+      border-radius:14px; padding:14px;
+    }
+    .creator h4{ margin:0 0 6px; font-size:16px }
+    .creator p{ margin:0; color:var(--muted); font-size:14px }
+
+    /* フッター */
+    footer{ color:var(--muted); text-align:center; padding:32px 0 80px }
+
+    /* 上に戻るボタン（最下部付近で出現） */
+    #toTop{
+      position:fixed; right:18px; bottom:18px;
+      opacity:0; pointer-events:none; transform:translateY(10px);
+      transition:opacity .2s ease, transform .2s ease;
+      padding:12px 16px; border-radius:999px;
+      background:linear-gradient(180deg, #2563eb, #1d4ed8);
+      color:#fff; font-weight:700; border:none; cursor:pointer;
+      box-shadow:0 10px 22px rgba(37,99,235,.35);
+    }
+    #toTop.show{ opacity:1; transform:translateY(0); pointer-events:auto }
+  </style>
+</head>
+<body>
+
+  <header class="container">
+    <section class="hero" aria-label="アプリのトップ">
+      <div class="hero-inner">
+        <h1 class="app-name">今治 観光スポット</h1>
+        <p class="subtitle">海と城としまなみ海道。写真で巡る、今治の見どころ。</p>
+        <span class="badge">Imabari Sightseeing App</span>
+      </div>
+    </section>
+  </header>
+
+  <main class="container" id="top">
+    <h2 class="section-title">観光フォトギャラリー</h2>
+
+    <!-- 画像は差し替え自由。今は安定のプレースホルダーURLを使用 -->
+    <!-- 実写真に変える場合は各 img の src を差し替えてください -->
+    <section class="grid" aria-label="観光スポットの写真一覧">
+      <article class="card">
+        <img loading="lazy" src="https://placehold.co/1200x800?text=Kurushima+Kaiky%C5%8D+Bridge" alt="来島海峡大橋（今治）">
+        <div class="card-body">
+          <h3 class="spot-name">来島海峡大橋</h3>
+          <p class="spot-caption">しまなみ海道の象徴。瀬戸内の多島美を一望。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img loading="lazy" src="https://placehold.co/1200x800?text=Imabari+Castle" alt="今治城（今治）">
+        <div class="card-body">
+          <h3 class="spot-name">今治城</h3>
+          <p class="spot-caption">海水堀が美しい近世城郭。夜景ライトアップも人気。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img loading="lazy" src="https://placehold.co/1200x800?text=Shimanami+Cycling" alt="しまなみ海道サイクリング（今治）">
+        <div class="card-body">
+          <h3 class="spot-name">しまなみ海道サイクリング</h3>
+          <p class="spot-caption">島々を渡る爽快ルート。レンタサイクルも充実。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img loading="lazy" src="https://placehold.co/1200x800?text=Oshima+View" alt="大島からの眺望（今治）">
+        <div class="card-body">
+          <h3 class="spot-name">大島・亀老山展望公園</h3>
+          <p class="spot-caption">屈指の絶景スポット。橋と海のコントラスト。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img loading="lazy" src="https://placehold.co/1200x800?text=Tatara+Bridge" alt="多々羅大橋（今治～生口島）">
+        <div class="card-body">
+          <h3 class="spot-name">多々羅大橋</h3>
+          <p class="spot-caption">美しい斜張橋。写真映えの定番スポット。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img loading="lazy" src="https://placehold.co/1200x800?text=Sunset+Setouchi" alt="瀬戸内の夕景（今治）">
+        <div class="card-body">
+          <h3 class="spot-name">瀬戸内の夕景</h3>
+          <p class="spot-caption">刻々と変わる空。穏やかな海に映える残照。</p>
+        </div>
+      </article>
+    </section>
+
+    <h2 class="section-title">作成者</h2>
+    <section class="creators" aria-label="作成メンバー">
+      <div class="creator">
+        <h4>作成者A</h4>
+        <p>写真・テキスト担当</p>
+      </div>
+      <div class="creator">
+        <h4>作成者B</h4>
+        <p>デザイン・コーディング担当</p>
+      </div>
+      <div class="creator">
+        <h4>作成者C</h4>
+        <p>調査・編集担当</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <small>© <span id="y"></span> Imabari Sightseeing</small>
+  </footer>
+
+  <button id="toTop" aria-label="上に戻る">▲ 上に戻る</button>
+
+  <script>
+    // 年号
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // 最下部付近で「上に戻る」ボタンを表示
+    const btn = document.getElementById('toTop');
+    const showThresholdPx = 120; // これより手前で表示開始（最下部からの距離）
+
+    const toggleTopBtn = () => {
+      const scrollBottomGap =
+        document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+      if (scrollBottomGap <= showThresholdPx) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    };
+
+    window.addEventListener('scroll', toggleTopBtn, {passive:true});
+    window.addEventListener('resize', toggleTopBtn);
+    window.addEventListener('load', toggleTopBtn);
+
+    // スムーズスクロールで上に戻る
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
