@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>今治 観光スポット</title>
   <meta name="description" content="海と城としまなみ海道。写真で巡る、今治の見どころ。">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -22,7 +22,10 @@
   <main class="container" id="top">
     <h2 class="section-title">観光フォトギャラリー</h2>
 
+    <!-- 画像は差し替え自由。今は安定のプレースホルダーURLを使用 -->
+    <!-- 実写真に変える場合は各 img の src を差し替えてください -->
     <section class="grid" aria-label="観光スポットの写真一覧">
+
       <article class="card">
         <img loading="lazy" src="https://placehold.co/1200x800?text=Kurushima+Kaiky%C5%8D+Bridge" alt="来島海峡大橋（今治）">
         <div class="card-body">
@@ -48,7 +51,7 @@
       </article>
 
       <article class="card">
-        <img loading="lazy" src="https://placehold.co/1200x800?text=Oshima+View" alt="大島・亀老山展望公園（今治）">
+        <img loading="lazy" src="https://placehold.co/1200x800?text=Oshima+View" alt="大島からの眺望（今治）">
         <div class="card-body">
           <h3 class="spot-name">大島・亀老山展望公園</h3>
           <p class="spot-caption">屈指の絶景スポット。橋と海のコントラスト。</p>
@@ -70,6 +73,7 @@
           <p class="spot-caption">刻々と変わる空。穏やかな海に映える残照。</p>
         </div>
       </article>
+
     </section>
 
     <h2 class="section-title">作成者</h2>
@@ -79,11 +83,11 @@
         <p>写真・テキスト担当</p>
       </div>
       <div class="creator">
-        <h4>かずや</h4>
+        <h4>作成者B</h4>
         <p>デザイン・コーディング担当</p>
       </div>
       <div class="creator">
-        <h4>りゅうま</h4>
+        <h4>作成者C</h4>
         <p>調査・編集担当</p>
       </div>
     </section>
@@ -95,6 +99,32 @@
 
   <button id="toTop" aria-label="上に戻る">▲ 上に戻る</button>
 
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    // 年号
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // 最下部付近で「上に戻る」ボタンを表示
+    const btn = document.getElementById('toTop');
+    const showThresholdPx = 120; // これより手前で表示開始（最下部からの距離）
+
+    const toggleTopBtn = () => {
+      const scrollBottomGap =
+        document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+      if (scrollBottomGap <= showThresholdPx) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    };
+
+    window.addEventListener('scroll', toggleTopBtn, {passive:true});
+    window.addEventListener('resize', toggleTopBtn);
+    window.addEventListener('load', toggleTopBtn);
+
+    // スムーズスクロールで上に戻る
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
