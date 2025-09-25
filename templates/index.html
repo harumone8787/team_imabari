@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>今治 観光スポット</title>
   <meta name="description" content="海と城としまなみ海道。写真で巡る、今治の見どころ。">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- 本番では Flask を使う場合、下の1行に戻すとキャッシュ破棄が効きます -->
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
@@ -22,52 +24,68 @@
   <main class="container" id="top">
     <h2 class="section-title">観光フォトギャラリー</h2>
 
-    <!-- 画像は差し替え自由。今は安定のプレースホルダーURLを使用 -->
-    <!-- 実写真に変える場合は各 img の src を差し替えてください -->
     <section class="grid" aria-label="観光スポットの写真一覧">
 
+      <!-- 来島海峡大橋（夕景） -->
       <article class="card">
-        <img loading="lazy" src="https://placehold.co/1200x800?text=Kurushima+Kaiky%C5%8D+Bridge" alt="来島海峡大橋（今治）">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Kurushima-Kaikyo_Bridge_sunset.jpg?width=1200"
+             alt="来島海峡大橋（今治） 夕景">
         <div class="card-body">
           <h3 class="spot-name">来島海峡大橋</h3>
           <p class="spot-caption">しまなみ海道の象徴。瀬戸内の多島美を一望。</p>
         </div>
       </article>
 
+      <!-- 今治城（ライトアップ） -->
       <article class="card">
-        <img loading="lazy" src="https://placehold.co/1200x800?text=Imabari+Castle" alt="今治城（今治）">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Imabari_Castle_at_night.JPG?width=1200"
+             alt="今治城（今治） 夜のライトアップ">
         <div class="card-body">
           <h3 class="spot-name">今治城</h3>
           <p class="spot-caption">海水堀が美しい近世城郭。夜景ライトアップも人気。</p>
         </div>
       </article>
 
+      <!-- しまなみ海道サイクリング（自転車道） -->
       <article class="card">
-        <img loading="lazy" src="https://placehold.co/1200x800?text=Shimanami+Cycling" alt="しまなみ海道サイクリング（今治）">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Shimanami_Kaido_Bikeway_%2814089291941%29.jpg?width=1200"
+             alt="しまなみ海道サイクリング（今治）">
         <div class="card-body">
           <h3 class="spot-name">しまなみ海道サイクリング</h3>
           <p class="spot-caption">島々を渡る爽快ルート。レンタサイクルも充実。</p>
         </div>
       </article>
 
+      <!-- 大島・亀老山展望公園（展望台） -->
       <article class="card">
-        <img loading="lazy" src="https://placehold.co/1200x800?text=Oshima+View" alt="大島からの眺望（今治）">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Observatory_in_Mt._Kirosan.jpg?width=1200"
+             alt="大島 亀老山展望公園の展望デッキと瀬戸内の眺望">
         <div class="card-body">
           <h3 class="spot-name">大島・亀老山展望公園</h3>
           <p class="spot-caption">屈指の絶景スポット。橋と海のコントラスト。</p>
         </div>
       </article>
 
+      <!-- 多々羅大橋（道の駅からの眺め） -->
       <article class="card">
-        <img loading="lazy" src="https://placehold.co/1200x800?text=Tatara+Bridge" alt="多々羅大橋（今治～生口島）">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Tatara_Bridge_from_Roadside_Station_%22Imabari_City_Tatara_Shimanami_Park%22_6.jpg?width=1200"
+             alt="多々羅大橋（今治〜生口島）">
         <div class="card-body">
           <h3 class="spot-name">多々羅大橋</h3>
           <p class="spot-caption">美しい斜張橋。写真映えの定番スポット。</p>
         </div>
       </article>
 
+      <!-- 瀬戸内の夕景 -->
       <article class="card">
-        <img loading="lazy" src="https://placehold.co/1200x800?text=Sunset+Setouchi" alt="瀬戸内の夕景（今治）">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_-_Flickr_-_halfrain.jpg?width=1200"
+             alt="瀬戸内の夕景（今治周辺）">
         <div class="card-body">
           <h3 class="spot-name">瀬戸内の夕景</h3>
           <p class="spot-caption">刻々と変わる空。穏やかな海に映える残照。</p>
@@ -105,8 +123,7 @@
 
     // 最下部付近で「上に戻る」ボタンを表示
     const btn = document.getElementById('toTop');
-    const showThresholdPx = 120; // これより手前で表示開始（最下部からの距離）
-
+    const showThresholdPx = 120;
     const toggleTopBtn = () => {
       const scrollBottomGap =
         document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
@@ -116,8 +133,7 @@
         btn.classList.remove('show');
       }
     };
-
-    window.addEventListener('scroll', toggleTopBtn, {passive:true});
+    window.addEventListener('scroll', toggleTopBtn, { passive: true });
     window.addEventListener('resize', toggleTopBtn);
     window.addEventListener('load', toggleTopBtn);
 

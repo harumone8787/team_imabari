@@ -29,7 +29,7 @@ img{display:block;max-width:100%;height:auto;border-radius:16px}
 .hero::before{
   content:"";
   position:absolute; inset:0;
-  background:url("https://images.unsplash.com/photo-1491555103944-7c647fd857e6?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
+  background:url("https://www.shimanamiartmuseum.com/wp-content/uploads/2022/07/kirousan_slider09.jpg") center/cover no-repeat;
   opacity:.6; filter:grayscale(.2) contrast(1.05) brightness(.9);
   z-index:-2;
 }
