@@ -30,15 +30,20 @@
     <div class="hero-inner">
       <p class="subtitle">海と城としまなみ海道。写真で巡る、今治の見どころ。</p>
       <span class="badge">Imabari Sightseeing App</span>
+
+      <!-- アプリ登録ボタン -->
+      <a href="https://example.com/register-app" class="hero-button">
+        アプリを登録する
+      </a>
     </div>
   </section>
 
-<main class="container" id="top">
+  <main class="container" id="top">
     <h2 class="section-title">観光フォトギャラリー</h2>
 
     <section class="grid" aria-label="観光スポットの写真一覧">
 
-      <!-- 来島海峡大橋（夕景） -->
+      <!-- 来島海峡大橋 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Kurushima-Kaikyo_Bridge_sunset.jpg?width=1200"
@@ -49,7 +54,7 @@
         </div>
       </article>
 
-      <!-- 今治城（ライトアップ） -->
+      <!-- 今治城 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Imabari_Castle_at_night.JPG?width=1200"
@@ -60,7 +65,7 @@
         </div>
       </article>
 
-      <!-- しまなみ海道サイクリング（自転車道） -->
+      <!-- しまなみ海道サイクリング -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Shimanami_Kaido_Bikeway_%2814089291941%29.jpg?width=1200"
@@ -71,7 +76,7 @@
         </div>
       </article>
 
-      <!-- 大島・亀老山展望公園（展望台） -->
+      <!-- 大島・亀老山展望公園 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Observatory_in_Mt._Kirosan.jpg?width=1200"
@@ -82,7 +87,7 @@
         </div>
       </article>
 
-      <!-- 多々羅大橋（道の駅からの眺め） -->
+      <!-- 多々羅大橋 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Tatara_Bridge_from_Roadside_Station_%22Imabari_City_Tatara_Shimanami_Park%22_6.jpg?width=1200"
@@ -148,7 +153,6 @@
     window.addEventListener('scroll', toggleTopBtn, { passive: true });
     window.addEventListener('resize', toggleTopBtn);
     window.addEventListener('load', toggleTopBtn);
-
     btn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
