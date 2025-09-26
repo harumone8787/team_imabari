@@ -3,11 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>今治 観光スポット２</title>
+  <title>今治 観光スポット</title>
   <meta name="description" content="海と城としまなみ海道。写真で巡る、今治の見どころ。">
-  <!-- 本番では Flask を使う場合、下の1行に戻すとキャッシュ破棄が効きます -->
-  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -18,15 +16,26 @@
         <p class="subtitle">海と城としまなみ海道。写真で巡る、今治の見どころ。</p>
         <span class="badge">Imabari Sightseeing App</span>
       </div>
+
+      <!-- ハンバーガーメニュー -->
+      <nav class="nav">
+        <button class="menu-btn" id="menuBtn" aria-label="メニュー">☰</button>
+        <ul class="menu" id="menu">
+          <li><a href="#top">トップ</a></li>
+          <li><a href="#gallery">フォトギャラリー</a></li>
+          <li><a href="#creators">作成者</a></li>
+          <li><a href="#toTop">上に戻る</a></li>
+        </ul>
+      </nav>
     </section>
   </header>
 
   <main class="container" id="top">
-    <h2 class="section-title">観光フォトギャラリー</h2>
+    <h2 class="section-title" id="gallery">観光フォトギャラリー</h2>
 
     <section class="grid" aria-label="観光スポットの写真一覧">
 
-      <!-- 来島海峡大橋（夕景） -->
+      <!-- 来島海峡大橋 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Kurushima-Kaikyo_Bridge_sunset.jpg?width=1200"
@@ -37,7 +46,7 @@
         </div>
       </article>
 
-      <!-- 今治城（ライトアップ） -->
+      <!-- 今治城 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Imabari_Castle_at_night.JPG?width=1200"
@@ -48,7 +57,7 @@
         </div>
       </article>
 
-      <!-- しまなみ海道サイクリング（自転車道） -->
+      <!-- しまなみ海道サイクリング -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Shimanami_Kaido_Bikeway_%2814089291941%29.jpg?width=1200"
@@ -59,7 +68,7 @@
         </div>
       </article>
 
-      <!-- 大島・亀老山展望公園（展望台） -->
+      <!-- 大島・亀老山展望公園 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Observatory_in_Mt._Kirosan.jpg?width=1200"
@@ -70,31 +79,9 @@
         </div>
       </article>
 
-      <!-- 多々羅大橋（道の駅からの眺め） -->
-      <article class="card">
-        <img loading="lazy"
-             src="https://commons.wikimedia.org/wiki/Special:FilePath/Tatara_Bridge_from_Roadside_Station_%22Imabari_City_Tatara_Shimanami_Park%22_6.jpg?width=1200"
-             alt="多々羅大橋（今治〜生口島）">
-        <div class="card-body">
-          <h3 class="spot-name">多々羅大橋</h3>
-          <p class="spot-caption">美しい斜張橋。写真映えの定番スポット。</p>
-        </div>
-      </article>
-
-      <!-- 瀬戸内の夕景 -->
-      <article class="card">
-        <img loading="lazy"
-             src="https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_-_Flickr_-_halfrain.jpg?width=1200"
-             alt="瀬戸内の夕景（今治周辺）">
-        <div class="card-body">
-          <h3 class="spot-name">瀬戸内の夕景</h3>
-          <p class="spot-caption">刻々と変わる空。穏やかな海に映える残照。</p>
-        </div>
-      </article>
-
     </section>
 
-    <h2 class="section-title">作成者</h2>
+    <h2 class="section-title" id="creators">作成者</h2>
     <section class="creators" aria-label="作成メンバー">
       <div class="creator">
         <h4>越智</h4>
@@ -106,7 +93,7 @@
       </div>
       <div class="creator">
         <h4>りゅうま</h4>
-        <p>編集担当</p>
+        <p>調査・編集担当</p>
       </div>
     </section>
   </main>
@@ -121,7 +108,7 @@
     // 年号
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // 最下部付近で「上に戻る」ボタンを表示
+    // 上に戻るボタン制御
     const btn = document.getElementById('toTop');
     const showThresholdPx = 120;
     const toggleTopBtn = () => {
@@ -137,9 +124,20 @@
     window.addEventListener('resize', toggleTopBtn);
     window.addEventListener('load', toggleTopBtn);
 
-    // スムーズスクロールで上に戻る
     btn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ハンバーガーメニュー
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('show');
+      });
     });
   </script>
 </body>
