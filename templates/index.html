@@ -5,37 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>今治 観光スポット</title>
   <meta name="description" content="海と城としまなみ海道。写真で巡る、今治の見どころ。">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-  <header class="container">
-    <section class="hero" aria-label="アプリのトップ">
-      <div class="hero-inner">
-        <h1 class="app-name">今治 観光スポット</h1>
-        <p class="subtitle">海と城としまなみ海道。写真で巡る、今治の見どころ。</p>
-        <span class="badge">Imabari Sightseeing App</span>
-      </div>
+  <!-- ヘッダー -->
+  <header class="header container">
+    <h1 class="logo">今治 観光スポット</h1>
 
-      <!-- ナビゲーション -->
-      <nav class="nav">
-        <div class="nav-title">今治 観光スポット</div>
-        <button class="menu-btn" id="menuBtn" aria-label="メニュー">☰</button>
-        <ul class="menu" id="menu">
-          <li><a href="#top">トップ</a></li>
-          <li><a href="#gallery">フォトギャラリー</a></li>
-          <li><a href="#creators">作成者</a></li>
-          <li><a href="#toTop">上に戻る</a></li>
-        </ul>
-      </nav>
-    </section>
+    <!-- ハンバーガーメニュー -->
+    <nav class="nav">
+      <button class="menu-btn" id="menuBtn" aria-label="メニュー">☰</button>
+      <ul class="menu" id="menu">
+        <li><a href="#top">トップ</a></li>
+        <li><a href="#gallery">フォトギャラリー</a></li>
+        <li><a href="#creators">作成者</a></li>
+        <li><a href="#toTop">上に戻る</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="container" id="top">
-    <h2 class="section-title" id="gallery">観光フォトギャラリー</h2>
+  <!-- ヒーロー -->
+  <section class="hero container" aria-label="アプリのトップ">
+    <div class="hero-inner">
+      <p class="subtitle">海と城としまなみ海道。写真で巡る、今治の見どころ。</p>
+      <span class="badge">Imabari Sightseeing App</span>
+    </div>
+  </section>
+
+<main class="container" id="top">
+    <h2 class="section-title">観光フォトギャラリー</h2>
 
     <section class="grid" aria-label="観光スポットの写真一覧">
-      <!-- 各スポットカード -->
+
+      <!-- 来島海峡大橋（夕景） -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Kurushima-Kaikyo_Bridge_sunset.jpg?width=1200"
@@ -46,6 +49,7 @@
         </div>
       </article>
 
+      <!-- 今治城（ライトアップ） -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Imabari_Castle_at_night.JPG?width=1200"
@@ -56,6 +60,7 @@
         </div>
       </article>
 
+      <!-- しまなみ海道サイクリング（自転車道） -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Shimanami_Kaido_Bikeway_%2814089291941%29.jpg?width=1200"
@@ -66,6 +71,7 @@
         </div>
       </article>
 
+      <!-- 大島・亀老山展望公園（展望台） -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Observatory_in_Mt._Kirosan.jpg?width=1200"
@@ -76,10 +82,32 @@
         </div>
       </article>
 
+      <!-- 多々羅大橋（道の駅からの眺め） -->
+      <article class="card">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Tatara_Bridge_from_Roadside_Station_%22Imabari_City_Tatara_Shimanami_Park%22_6.jpg?width=1200"
+             alt="多々羅大橋（今治〜生口島）">
+        <div class="card-body">
+          <h3 class="spot-name">多々羅大橋</h3>
+          <p class="spot-caption">美しい斜張橋。写真映えの定番スポット。</p>
+        </div>
+      </article>
+
+      <!-- 瀬戸内の夕景 -->
+      <article class="card">
+        <img loading="lazy"
+             src="https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_-_Flickr_-_halfrain.jpg?width=1200"
+             alt="瀬戸内の夕景（今治周辺）">
+        <div class="card-body">
+          <h3 class="spot-name">瀬戸内の夕景</h3>
+          <p class="spot-caption">刻々と変わる空。穏やかな海に映える残照。</p>
+        </div>
+      </article>
+
     </section>
 
     <h2 class="section-title" id="creators">作成者</h2>
-    <section class="creators" aria-label="作成メンバー">
+    <section class="creators">
       <div class="creator">
         <h4>越智</h4>
         <p>写真・テキスト担当</p>
@@ -120,6 +148,7 @@
     window.addEventListener('scroll', toggleTopBtn, { passive: true });
     window.addEventListener('resize', toggleTopBtn);
     window.addEventListener('load', toggleTopBtn);
+
     btn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -127,14 +156,9 @@
     // ハンバーガーメニュー
     const menuBtn = document.getElementById('menuBtn');
     const menu = document.getElementById('menu');
-    menuBtn.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('show');
-      });
-    });
+    menuBtn.addEventListener('click', () => menu.classList.toggle('show'));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.remove('show')));
   </script>
+
 </body>
 </html>
