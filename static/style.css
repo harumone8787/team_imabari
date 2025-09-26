@@ -110,20 +110,37 @@ footer{ color:var(--muted); text-align:center; padding:32px 0 80px }
 }
 #toTop.show{ opacity:1; transform:translateY(0); pointer-events:auto }
 
-/* --- ハンバーガーメニュー --- */
+/* --- ナビゲーション --- */
 .nav {
   position: absolute;
   top: 1rem;
   right: 1rem;
   z-index: 1000;
+  display: flex;
+  align-items: center;
 }
+
+/* 左上タイトル */
+.nav .nav-title {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ハンバーガーメニュー */
 .menu-btn {
   font-size: 2rem;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--text);
+  margin-left: auto;
 }
+
+/* メニューリスト */
 .menu {
   list-style: none;
   margin: 0;

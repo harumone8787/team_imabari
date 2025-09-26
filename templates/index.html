@@ -17,8 +17,9 @@
         <span class="badge">Imabari Sightseeing App</span>
       </div>
 
-      <!-- ハンバーガーメニュー -->
+      <!-- ナビゲーション -->
       <nav class="nav">
+        <div class="nav-title">今治 観光スポット</div>
         <button class="menu-btn" id="menuBtn" aria-label="メニュー">☰</button>
         <ul class="menu" id="menu">
           <li><a href="#top">トップ</a></li>
@@ -34,8 +35,7 @@
     <h2 class="section-title" id="gallery">観光フォトギャラリー</h2>
 
     <section class="grid" aria-label="観光スポットの写真一覧">
-
-      <!-- 来島海峡大橋 -->
+      <!-- 各スポットカード -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Kurushima-Kaikyo_Bridge_sunset.jpg?width=1200"
@@ -46,7 +46,6 @@
         </div>
       </article>
 
-      <!-- 今治城 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Imabari_Castle_at_night.JPG?width=1200"
@@ -57,7 +56,6 @@
         </div>
       </article>
 
-      <!-- しまなみ海道サイクリング -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Shimanami_Kaido_Bikeway_%2814089291941%29.jpg?width=1200"
@@ -68,7 +66,6 @@
         </div>
       </article>
 
-      <!-- 大島・亀老山展望公園 -->
       <article class="card">
         <img loading="lazy"
              src="https://commons.wikimedia.org/wiki/Special:FilePath/Observatory_in_Mt._Kirosan.jpg?width=1200"
@@ -108,7 +105,7 @@
     // 年号
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // 上に戻るボタン制御
+    // 上に戻るボタン
     const btn = document.getElementById('toTop');
     const showThresholdPx = 120;
     const toggleTopBtn = () => {
@@ -123,7 +120,6 @@
     window.addEventListener('scroll', toggleTopBtn, { passive: true });
     window.addEventListener('resize', toggleTopBtn);
     window.addEventListener('load', toggleTopBtn);
-
     btn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
